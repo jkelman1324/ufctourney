@@ -1,2 +1,14 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<!-- src/routes/+page.svelte -->
+<script lang="ts">
+  import { supabase } from "$lib/supabaseClient";
+
+  async function signIn() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+    });
+  }
+</script>
+
+<h1>Welcome</h1>
+
+<button on:click={signIn}>Sign In</button>
